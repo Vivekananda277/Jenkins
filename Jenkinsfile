@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     environment {
-//        SAMPLE_URL="www.google.com"
-//        SLACK_TOKEN=credentials('slack')
-        //   }
+        SAMPLE_URL="www.google.com"
+        SLACK_TOKEN=credentials('slack')
+           }
         stages {
             stage('one') {
                 steps {
@@ -15,10 +15,9 @@ pipeline {
             }
             stage('two') {
                 steps {
-                    //    slackSend channel: '#nothing', message: 'Hello'
-                    //    slackSend channel: '#nothing', message: 'Nothing'
+                        slackSend channel: '#nothing', message: 'Hello'
+                        slackSend channel: '#nothing', message: 'Nothing'
                 }
             }
         }
     }
-}
