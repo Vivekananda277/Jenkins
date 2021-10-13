@@ -1,7 +1,7 @@
 pipeline{
     agent any
     environment{
-        SAMPLE_URL=www.google.com
+        SAMPLE_URL="www.google.com"
         SLACK_TOKEN=credentials('slack')
     }
     stages{
