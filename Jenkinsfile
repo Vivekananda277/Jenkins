@@ -5,13 +5,11 @@ pipeline{
         SLACK_TOKEN=credentials('slack')
     }
     stages{
-
         stage('one'){
-            steps{
+            steps {
                 sh 'echo Hello World'
                 sh 'echo ${SAMPLE_URL}'
                 sh 'echo ${SLACK_TOKEN}'
-
             }
         stage('two'){
             steps{
