@@ -31,7 +31,7 @@ def call(){
         steps {
           sh '''
         cd static
-        zip -r frontend.zip
+        zip -r frontend.zip *
         '''
         }
       }
