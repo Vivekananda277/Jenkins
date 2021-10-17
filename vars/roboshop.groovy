@@ -17,7 +17,7 @@ def call(String AGENT){
           echo 'Code quality'
         }
       }
-      stage('Lint checks'){
+      stage('Lintt checks'){
         steps {
           echo 'Lint checks'
         }
