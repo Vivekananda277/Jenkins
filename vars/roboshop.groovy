@@ -27,7 +27,7 @@ def call(String AGENT){
           echo 'Unit Tests'
         }
       }
-      stage('Prepare Artifacts'){
+      stage('Prepare Artifaacts'){
         steps {
           sh '''
         cd static
