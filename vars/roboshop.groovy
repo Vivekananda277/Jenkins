@@ -42,8 +42,8 @@ def call(String AGENT,String COMPONENT){
       }
     }
 
-    post{
-      always{
+    post {
+      always {
         cleanWs()
       }
     }
