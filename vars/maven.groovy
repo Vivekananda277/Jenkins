@@ -18,7 +18,7 @@ def call(String COMPONENT){
       stage('Check Code Quality'){
         steps {
           sh """
-            sonar-scanner -Dsonar.projectKey=${COMPONENT} -Dsonar.sources=. -Dsonar.host.url=http://172.31.31.141:9000 -Dsonar.login=${SONAR_TOKEN}
+            sonar-scanner -Dsonar.java.binaries=target/. -Dsonar.projectKey=${COMPONENT} -Dsonar.sources=. -Dsonar.host.url=http://172.31.31.141:9000 -Dsonar.login=${SONAR_TOKEN}
            """
         }
       }
