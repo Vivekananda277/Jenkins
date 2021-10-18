@@ -15,6 +15,13 @@ def call(String COMPONENT){
           sh """
             sonar-scanner -Dsonar.projectKey=${COMPONENT} -Dsonar.sources=. -Dsonar.host.url=http://172.31.31.141:9000 -Dsonar.login=${SONAR_TOKEN}
            """
+          echo Submit
+        }
+      }
+
+      stage('Check Code Quality'){
+        steps {
+          echo 'Code Quality'
         }
       }
       stage('Lint checks'){
