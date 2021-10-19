@@ -45,6 +45,7 @@ def call(String COMPONENT){
         }
       }
       stage('Publish Artifacts'){
+        when { expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
         steps {
           echo 'Publish Artifacts'
         }
