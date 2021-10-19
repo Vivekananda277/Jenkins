@@ -34,7 +34,7 @@ def call(String COMPONENT){
           echo 'Unit Tests'
         }
       }
-      stage('Prepare Artifacts'){
+      stage('Prepare Artifaacts'){
         when { expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
         steps {
           sh '''
