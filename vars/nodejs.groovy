@@ -35,8 +35,8 @@ def call(String COMPONENT){
           sh 'env'
         }
       }
-      stage('Prepare Artifaacts'){
-        when { expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
+      stage('Prepare Artifacts'){
+        when{ buildingTag() }
         steps {
           sh '''
           cd static
