@@ -38,9 +38,9 @@ def call(String COMPONENT){
         when { expression { sh([returnStdout: true, script: 'echo ${GIT_BRANCH} | grep tags || true' ]) } }
         steps {
           sh '''
-        cd static
-        zip -r ${COMPONENT}.zip *
-        '''
+          cd static
+          zip -r ${COMPONENT}.zip *
+          '''
         }
       }
       stage('Publish Artifacts'){
