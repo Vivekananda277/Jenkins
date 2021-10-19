@@ -8,6 +8,9 @@ def call(String COMPONENT){
     environment{
       SONAR_TOKEN = credentials('SONAR_TOKEN')
     }
+
+    triggers { pollSCM('H/2 * * * 1-5') }
+
     stages{
 
       stage('Submit Code'){
