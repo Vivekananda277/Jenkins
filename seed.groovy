@@ -81,3 +81,31 @@ pipelineJob('Mutable/DB') {
     }
   }
 }
+
+for(int i in 0..count) {
+  def j = component[i]
+  pipelineJob("Mutable/${j}") {
+    configure { flowdefinition ->
+      flowdefinition << delegate.'definition'(class: 'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition', plugin: 'workflow-cps') {
+        'scm'(class: 'hudson.plugins.git.GitSCM', plugin: 'git') {
+          'userRemoteConfigs' {
+            'hudson.plugins.git.UserRemoteConfig' {
+              'url'("https://vivekanandareddy544@dev.azure.com/vivekanandareddy544/Roboshop/_git/${j}")
+              'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
+            }
+          }
+          'branches' {
+            'hudson.plugins.git.BranchSpec' {
+              'name'('*/tags/*')
+            }
+            'hudson.plugins.git.BranchSpec' {
+              'name'('*/main')
+            }
+          }
+        }
+        'scriptPath'('Jenkinsfile-infra')
+        'lightweight'(true)
+      }
+    }
+  }
+}
