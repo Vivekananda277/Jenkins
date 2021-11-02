@@ -15,7 +15,7 @@ def count = (component.size() -1 )
          'scm'(class: 'hudson.plugins.git.GitSCM', plugin: 'git') {
            'userRemoteConfigs' {
              'hudson.plugins.git.UserRemoteConfig' {
-               'url'("https://DevOps-Batches@dev.azure.com/DevOps-Batches/DevOps58/_git/${j}")
+               'url'("https://vivekanandareddy544@dev.azure.com/vivekanandareddy544/Roboshop/_git/${j}")
                'refspec'('\'+refs/tags/*\':\'refs/remotes/origin/tags/*\'')
              }
            }
@@ -35,3 +35,49 @@ def count = (component.size() -1 )
    }
  }
 
+folder('Mutable') {
+  displayName('Mutable')
+  description('Mutable')
+}
+
+pipelineJob('Mutable/vpc') {
+  configure { flowdefinition ->
+    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
+      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
+        'userRemoteConfigs' {
+          'hudson.plugins.git.UserRemoteConfig' {
+            'url'('https://vivekanandareddy544@dev.azure.com/vivekanandareddy544/Roboshop/_git/terraform-mutable')
+          }
+        }
+        'branches' {
+          'hudson.plugins.git.BranchSpec' {
+            'name'('*/main')
+          }
+        }
+      }
+      'scriptPath'('vpc/Jenkinsfile')
+      'lightweight'(true)
+    }
+  }
+}
+
+pipelineJob('Mutable/DB') {
+  configure { flowdefinition ->
+    flowdefinition << delegate.'definition'(class:'org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition',plugin:'workflow-cps') {
+      'scm'(class:'hudson.plugins.git.GitSCM',plugin:'git') {
+        'userRemoteConfigs' {
+          'hudson.plugins.git.UserRemoteConfig' {
+            'url'('https://vivekanandareddy544@dev.azure.com/vivekanandareddy544/Roboshop/_git/terraform-mutable')
+          }
+        }
+        'branches' {
+          'hudson.plugins.git.BranchSpec' {
+            'name'('*/main')
+          }
+        }
+      }
+      'scriptPath'('databases/Jenkinsfile')
+      'lightweight'(true)
+    }
+  }
+}
